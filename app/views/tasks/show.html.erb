@@ -1,0 +1,13 @@
+<h1>Task Overview</h1>
+<h2> <%= @list_of_tasks[@task_id][:name] %> </h2>
+<p> The data that should be displayed:
+<p>  Task Name: <%= @list_of_tasks[@task_id][:name] %> </p>
+<p>  Description: <%= @list_of_tasks[@task_id][:description] %> </p>
+<p>  Completion Status: <%= @list_of_tasks[@task_id][:completion_status] %> </p>
+<p>  Completion Date: <%= @list_of_tasks[@task_id][:completion_date] %> </p>
+</p>
+
+
+
+
+<br><%= link_to "return to complete task list", root_path %>
