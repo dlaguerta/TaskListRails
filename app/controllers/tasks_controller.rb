@@ -67,6 +67,21 @@ class TasksController < ApplicationController
 
     puts "This is the id: #{params[:id]}"
         @task_id = params[:id].to_i - 1
-
   end
+
+  def new
+  end
+
+  def create
+    redirect_to tasks_path 
+  end
+  # puts "HERE IS YOUR NEW TASK #{ params }"
+  # #HERE IS WHERE WE WILL SAVE IT TO THE DATABASE
+  #
+  # new_task = {
+  #   name: params[:name],
+  #   description: params[:description]
+  # }
+ #this entries path corresponds to a the entries route and starts a new process
+
 end
