@@ -27,13 +27,13 @@ class TasksController < ApplicationController
 
   def update
     @edit_task = Task.find(params[:id])
-  if @edit_task.update(task_params) #if it saves successfully
-    redirect_to tasks_path
-  else #if it doesn't save
-    render :edit
+    if @edit_task.update(task_params) #if it saves successfully
+      redirect_to tasks_path
+    else #if it doesn't save
+      render :edit
+    end
   end
-  end
-
+  
 
 
   private
