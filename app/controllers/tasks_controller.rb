@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   def index
+    # @list_of_tasks = Task.all
     @list_of_tasks = [
       { id: 1,
         name:  "finish homework",
@@ -38,6 +39,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    # @list_of_tasks = Task.find(params[:id])
     @list_of_tasks = [
       { id: 1,
         name:  "finish homework",
@@ -73,7 +75,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    redirect_to tasks_path 
+    redirect_to tasks_path
   end
   # puts "HERE IS YOUR NEW TASK #{ params }"
   # #HERE IS WHERE WE WILL SAVE IT TO THE DATABASE
