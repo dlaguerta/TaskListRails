@@ -2,7 +2,9 @@
 
 <ul>
 <% @list_of_tasks.each do |task|  %>
-  <li><%= link_to("#{task[:name]}", task_path(task[:id])) %> </li>
+  <li><%= link_to("#{task[:name]}", task_path(task[:id])) %>
+  <%= link_to "Edit Task", task_edit_path(task[:id]) %>
+  </li>
 <% end %>
 </ul>
 

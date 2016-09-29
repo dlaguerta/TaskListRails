@@ -1,89 +1,44 @@
 class TasksController < ApplicationController
   def index
-     @list_of_tasks = Task.all
-    # @list_of_tasks = [
-    #   { id: 1,
-    #     name:  "finish homework",
-    #     description: "do the homework!",
-    #     completion_status: "not there yet",
-    #     completion_date: "not there yet"
-    #   },
-    #   { id: 2,
-    #     name: "drink beer",
-    #     description: "get a lot of beer and drink it",
-    #     completion_status: "not there yet",
-    #     completion_date: "not there yet"
-    #   },
-    #   { id: 3,
-    #     name: "feed foot foot",
-    #     description: "give the cat lots of food food",
-    #     completion_status: "not there yet",
-    #     completion_date: "not there yet"
-    #   },
-    #   { id: 4,
-    #     name: "deal with the litter box",
-    #     description: "get that poop out of there",
-    #     completion_status: "not there yet",
-    #     completion_date: "not there yet"
-    #   }
-    # ]
-
-    # @list_of_tasks = {
-    #   # name, description, completion status, and completion date.
-    #   name: params[:name],
-    #   description: params[:description],
-    #   completion_status: params[:completion_status],
-    #   completion_date: params[:completion_date]
-    # }
-
+    @list_of_tasks = Task.all
   end
 
   def show
-     @single_task = Task.find(params[:id])
-    # @list_of_tasks = [
-    #   { id: 1,
-    #     name:  "finish homework",
-    #     description: "do the homework!",
-    #     completion_status: "not there yet",
-    #     completion_date: "not there yet"
-    #   },
-    #   { id: 2,
-    #     name: "drink beer",
-    #     description: "get a lot of beer and drink it",
-    #     completion_status: "not there yet",
-    #     completion_date: "not there yet"
-    #   },
-    #   { id: 3,
-    #     name: "feed foot foot",
-    #     description: "give the cat lots of food food",
-    #     completion_status: "not there yet",
-    #     completion_date: "not there yet"
-    #   },
-    #   { id: 4,
-    #     name: "deal with the litter box",
-    #     description: "get that poop out of there",
-    #     completion_status: "not there yet",
-    #     completion_date: "not there yet"
-    #   }
-    # ]
-
-    puts "This is the id: #{params[:id]}"
-        @task_id = params[:id].to_i - 1
+    @single_task = Task.find(params[:id])
   end
 
   def new
+    @new_task = Task.new
   end
 
   def create
-    redirect_to tasks_path
-  end
-  # puts "HERE IS YOUR NEW TASK #{ params }"
-  # #HERE IS WHERE WE WILL SAVE IT TO THE DATABASE
-  #
-  # new_task = {
-  #   name: params[:name],
-  #   description: params[:description]
-  # }
- #this entries path corresponds to a the entries route and starts a new process
+    @new_task = Task.new(task_params)
 
+    if @new_task.save
+      redirect_to tasks_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @edit_task = Task.find(params[:id])
+  end
+
+  def update
+    @edit_task = Task.find(params[:id])
+  if @edit_task.update(task_params) #if it saves successfully
+    redirect_to tasks_path
+  else #if it doesn't save
+    render :edit
+  end
+  end
+
+
+
+  private
+
+  def task_params #will permit and require params we trust
+    params.require(:task).permit(:name, :description, :completion_status, :completion_date)
+  end
 end
