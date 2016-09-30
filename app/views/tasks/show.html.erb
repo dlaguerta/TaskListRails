@@ -8,6 +8,8 @@
 </p>
 
 
-
-
+<p><%= link_to "Edit Task", task_edit_path(@single_task[:id]) %> </p>
+<p><%= link_to "Delete task", task_path(@single_task[:id]),
+                            method: :delete,
+                            data: { confirm: 'Are you sure you want to delete this task?'} %></p>
 <br><%= link_to "return to complete task list", root_path %>
