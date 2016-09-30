@@ -1,9 +1,18 @@
-<h1> list of tasks </h1>
+<h1> Alyssa-Diane's List of Tasks </h1>
 
 <ul>
 <% @list_of_tasks.each do |task|  %>
   <li>
   <%= link_to("#{task[:name]}", task_path(task[:id])) %>
+
+      <% if task[:completion_status] == true %>
+      <% @valid = "complete"%>
+      <br><%= "Current Task Status: #{@valid}"%>
+      <% else %>
+      <% @valid = "incomplete" %>
+      <br><%= "Current Task Status: #{@valid}"%> 
+      <%end%>
+
   <br><%= link_to "Edit Task", task_edit_path(task[:id]) %>
   <br><%= link_to "Delete task", task_path(task[:id]),
                               method: :delete,
