@@ -32,6 +32,9 @@ class TasksController < ApplicationController
       if @edit_task.completion_status == false
         @edit_task.completion_date = nil
         @edit_task.save
+      else
+        @edit_task.completion_date = Date.current
+        @edit_task.save
       end
       redirect_to tasks_path
     else #if it doesn't save
