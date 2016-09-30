@@ -33,7 +33,15 @@ class TasksController < ApplicationController
       render :edit
     end
   end
-  
+
+  def destroy
+    @destroy_task = Task.find(params[:id])
+    @destroy_task.destroy
+
+    redirect_to tasks_path
+  end
+
+
 
 
   private
