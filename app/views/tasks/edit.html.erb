@@ -10,6 +10,9 @@
 
   <%= f.label :completion_status, "Completed?" %>
   <%= f.check_box :completion_status %>
+  <% if @edit_task.completion_status== false %>
+  <%  @edit_task.completion_date = nil%>
+  <%  end%>
 
   <%= f.label :completion_date %>
   <%= f.date_field :completion_date %>

@@ -2,11 +2,10 @@ class Task < ActiveRecord::Base
 
   def task_status
     if completion_status == true
-      @valid = "complete"
-      "Current Task Status: #{@valid}"
+      "Current Task Status: Complete"
     else
-      @valid = "incomplete"
-      "Current Task Status: #{@valid}"
+      completion_date = nil
+      "Current Task Status: Incomplete"
     end
   end
 end
