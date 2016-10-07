@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'tasks#index'
-  resources :tasks
+  resources :tasks #only generates canonical RESTful routes 
   # get 'tasks' => 'tasks#index'
   # get 'tasks/new' => 'tasks#new'
   # post 'tasks' => 'tasks#create'
