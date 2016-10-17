@@ -1,5 +1,11 @@
 class TasksController < ApplicationController
   def index
+    if session[:user_id].nil?
+      redirect_to login_failure_path
+    else
+      @user = User.find(session[:user_id])
+      #implicit render :index when there is a successful login
+    end
     @list_of_tasks = Task.all
   end
 
