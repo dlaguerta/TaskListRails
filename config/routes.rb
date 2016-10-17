@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'tasks#index'
-  resources :tasks #only generates canonical RESTful routes 
+
+  get 'auth/:provider/callback' => 'sessions#create'
+  resources :tasks #only generates canonical RESTful routes
   # get 'tasks' => 'tasks#index'
   # get 'tasks/new' => 'tasks#new'
   # post 'tasks' => 'tasks#create'
