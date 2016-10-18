@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # root 'tasks#index'
-  root 'sessions#index'
+  root 'welcome#index'
+
+  get '/' => 'welcome#index', as: "welcome"
 
   get 'auth/:provider/callback' => 'sessions#create'
 
