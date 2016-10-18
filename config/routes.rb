@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  root 'tasks#index'
+  # root 'tasks#index'
+  root 'sessions#index'
 
   get 'auth/:provider/callback' => 'sessions#create'
+
   get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"
+
+  get "/sessions", to: "sessions#index", as: "sessions"
+
+  delete "/sessions", to: "sessions#destroy"
+
+  #routes for tasks
   resources :tasks #only generates canonical RESTful routes
   # get 'tasks' => 'tasks#index'
   # get 'tasks/new' => 'tasks#new'

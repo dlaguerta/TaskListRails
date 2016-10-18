@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def create
     auth_hash = request.env['omniauth.auth']
     redirect_to login_failure_path unless auth_hash['uid']
@@ -12,9 +11,8 @@ class SessionsController < ApplicationController
       render :creation_failure unless @user.save
     end
 
-    # redirect_to sessions_path
     session[:user_id] = @user.id
-    redirect_to tasks_path
+    redirect_to sessions_path
   end
 
   def index
@@ -25,6 +23,11 @@ class SessionsController < ApplicationController
       #implicit render :index when there is a successful login
 
     end
+  end
+
+  def destroy
+    session.delete(:user_id)
+    redirect_to sessions_path
   end
 
   def login_failure
