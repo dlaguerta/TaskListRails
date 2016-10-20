@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :find_task, only: [:show, :edit, :update, :finished, :destroy]
+  # before_action :find_task, only: [:show, :edit, :update, :finished, :destroy]
+  before_action :find_task, except: [:index, :new, :create]
   def index
     @list_of_tasks = Task.all
   end

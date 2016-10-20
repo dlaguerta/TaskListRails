@@ -3,29 +3,16 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get '/' => 'welcome#index', as: "welcome"
-
   get 'auth/:provider/callback' => 'sessions#create'
-
   get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"
-
   get "/sessions", to: "sessions#index", as: "sessions"
-
   delete "/sessions", to: "sessions#destroy"
 
-  #routes for tasks
   resources :tasks #only generates canonical RESTful routes
-  # get 'tasks' => 'tasks#index'
-  # get 'tasks/new' => 'tasks#new'
-  # post 'tasks' => 'tasks#create'
 
   patch 'tasks/:id/finished' => 'tasks#finished', as: 'task_finished'
 
-  # get 'tasks/:id/edit' => 'tasks#edit', as: 'task_edit'
-  # patch 'tasks/:id' => 'tasks#update'
-  #
-  # delete 'tasks/:id' => 'tasks#destroy'
-  #
-  # get 'tasks/:id' => 'tasks#show', as:'task'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
