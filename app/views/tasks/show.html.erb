@@ -1,15 +1,15 @@
 <h1>Task Overview</h1>
-<h2> <%= @single_task.name %> </h2>
+<h2> <%= @task.name %> </h2>
 <p>
-  <p>  Task Name: <%= @single_task.name %> </p>
-  <p>  Description: <%= @single_task.description %> </p>
-  <p> <%= @single_task.task_status %> </p>
-  <p>  Completion Date: <%= @single_task.completion_date %> </p>
+  <p>  Task Name: <%= @task.name %> </p>
+  <p>  Description: <%= @task.description %> </p>
+  <p> <%= @task.task_status %> </p>
+  <p>  Completion Date: <%= @task.completion_date %> </p>
 </p>
 
 
-<p><%= link_to "Edit Task", edit_task_path(@single_task.id) %> </p>
-<p><%= link_to "Delete task", task_path(@single_task.id),
+<p><%= link_to "Edit Task", edit_task_path(@task.id) %> </p>
+<p><%= link_to "Delete task", task_path(@task.id),
 method: :delete,
 data: { confirm: 'Are you sure you want to delete this task?'} %></p>
 <br><%= link_to "return to complete task list", root_path %>

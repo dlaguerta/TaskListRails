@@ -1,11 +1,10 @@
 class TasksController < ApplicationController
+  before_action :find_task, only: [:show, :edit, :update, :finished, :destroy]
   def index
     @list_of_tasks = Task.all
   end
 
-  def show
-    @single_task = Task.find(params[:id])
-  end
+  def show; end
 
   def new
     @new_task = Task.new
@@ -21,20 +20,16 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit
-    @edit_task = Task.find(params[:id])
-
-  end
+  def edit; end
 
   def update
-    @edit_task = Task.find(params[:id])
-    if @edit_task.update(task_params) #if it saves successfully
-      if @edit_task.completion_status == false
-        @edit_task.completion_date = nil
-        @edit_task.save
+    if @task.update(task_params) #if it saves successfully
+      if @task.completion_status == false
+        @task.completion_date = nil
+        @task.save
       else
-        @edit_task.completion_date = Date.current
-        @edit_task.save
+        @task.completion_date = Date.current
+        @task.save
       end
       redirect_to tasks_path
     else #if it doesn't save
@@ -43,18 +38,16 @@ class TasksController < ApplicationController
   end
 
   def finished
-    @finished_task = Task.find(params[:id])
-    if @finished_task.completion_status == false
-      @finished_task.completion_status = true
-      @finished_task.completion_date = Date.current
-      @finished_task.save
+    if @task.completion_status == false
+      @task.completion_status = true
+      @task.completion_date = Date.current
+      @task.save
     end
     redirect_to tasks_path
   end
 
   def destroy
-    @destroy_task = Task.find(params[:id])
-    @destroy_task.destroy
+    @task.destroy
 
     redirect_to tasks_path
   end
@@ -63,5 +56,9 @@ class TasksController < ApplicationController
 
   def task_params #will permit and require params we trust
     params.require(:task).permit(:name, :description, :completion_status, :completion_date)
+  end
+
+  def find_task
+    @task = Task.find(params[:id])
   end
 end
