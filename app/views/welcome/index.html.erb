@@ -1,3 +1,6 @@
+<% if flash[:error] %>
+<p><%= flash[:error] %></p>
+<% end  %>
 Welcome to Task List Rails!
 
 <%= link_to "Log In", "http://localhost:3000/auth/github"  %>

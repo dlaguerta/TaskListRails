@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:login, :create]
+
+
   def create
     auth_hash = request.env['omniauth.auth']
     redirect_to login_failure_path unless auth_hash['uid']
