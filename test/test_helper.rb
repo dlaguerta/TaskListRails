@@ -19,7 +19,7 @@ class ActiveSupport::TestCase
       })
   end
 
-  def is_logged_in?
+  def is_logged_in? #checks if user is logged in
    !session[:user_id].nil?
   end
 

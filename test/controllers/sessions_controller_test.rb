@@ -6,7 +6,7 @@ class SessionsControllerTest < ActionController::TestCase
     get :create,  {provider: "github"}
   end
 
-  # def logout_a_user
+  # def logout_a_user....
   #   request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
   #   get :create,  {provider: "github"}
   # end
@@ -31,15 +31,16 @@ class SessionsControllerTest < ActionController::TestCase
     end
   end
 
-#honestly not sure if this test is testing things correctly
+  #honestly not sure if this test is testing things correctly
   test "a user logging out cleans the sessions and redirects them to the home page" do
     login_a_user
-    user = users(:ada)
-    session.delete(user)
-    assert is_logged_in?
+    # user = users(:ada)
+    delete :destroy
+    # session.delete(user)
     assert_nil session[:user]
+    assert_not is_logged_in? #helper method
     assert_response :redirect
-   assert_redirected_to sessions_path
+    assert_redirected_to root_path
   end
 
 end
