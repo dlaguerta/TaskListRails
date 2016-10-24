@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-
+  belongs_to :user
   def task_status
     if completion_status == true
       "Current Task Status: Complete"
