@@ -1,23 +1,26 @@
 class TasksController < ApplicationController
   before_action :require_login
+  before_action :current_user
 
   skip_before_action :require_login, only: [:login, :create]
   # before_action :find_task, only: [:show, :edit, :update, :finished, :destroy]
   before_action :find_task, except: [:index, :new, :create]
+
   def index
-    @list_of_tasks = Task.all
+    @tasks = Task.all
   end
 
   def show; end
 
   def new
-    @new_task = Task.new
+    @task = Task.new
+    @task.user_id = @user.uid
   end
 
   def create
-    @new_task = Task.new(task_params)
-
-    if @new_task.save
+    @task = Task.new(task_params)
+    @task.user_id = @user.uid
+    if @task.save
       redirect_to tasks_path
     else
       render :new

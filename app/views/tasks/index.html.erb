@@ -2,7 +2,7 @@
 <h4><%= link_to "Add a new task!", new_task_path %></h4>
 
 <ul>
-  <% @list_of_tasks.each do |task|  %>
+  <% @tasks.each do |task|  %>
   <li>
     <%= link_to("#{task.name}", task_path(task.id)) %>
 
