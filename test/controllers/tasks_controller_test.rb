@@ -22,4 +22,5 @@ class TasksControllerTest < ActionController::TestCase
       assert_includes users(:grace).tasks, task #checks that each task is included in the collective tasks for grace
    end
   end
+
 end
