@@ -12,9 +12,17 @@
   </header>
 
   <nav>
-    <%= link_to "Log In" %>
-    <%= link_to "My Tasks" %>
+    <% if @user.nil? %>
+    <%= button_to "Log In with Github", 'auth/github', method: :get %>
+    <% else  %>
+      <%= link_to "My Tasks", tasks_path %>
+      <%= button_to "Log Out", sessions_path, method: :delete %>
+    <% end %>
+
+
+
   </nav>
+
 
 <%= yield %>
 
