@@ -33,6 +33,5 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  def login_failure
-  end
+  def login_failure; end
 end
