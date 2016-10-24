@@ -7,4 +7,5 @@ class Task < ActiveRecord::Base
       "Current Task Status: Incomplete"
     end
   end
+
 end

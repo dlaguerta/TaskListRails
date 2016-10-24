@@ -1,13 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
+  name: task 1
+  description: task number one
   completion_status: false
   completion_date: 2016-09-28
-
+  user: grace
 two:
-  name: MyString
-  description: MyString
+  name: task 2
+  description: task number two
   completion_status: false
   completion_date: 2016-09-28
+  user: grace

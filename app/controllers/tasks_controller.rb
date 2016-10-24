@@ -7,19 +7,19 @@ class TasksController < ApplicationController
   before_action :find_task, except: [:index, :new, :create]
 
   def index
-    @tasks = Task.all
+    @tasks = @user.tasks
   end
 
   def show; end
 
   def new
     @task = Task.new
-    @task.user_id = @user.uid
+    @task.user_id = @user.id #should it be uid?
   end
 
   def create
     @task = Task.new(task_params)
-    @task.user_id = @user.uid
+    @task.user_id = @user.id
     if @task.save
       redirect_to tasks_path
     else
@@ -52,6 +52,7 @@ class TasksController < ApplicationController
     end
     redirect_to tasks_path
   end
+
 
   def destroy
     @task.destroy

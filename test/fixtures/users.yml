@@ -5,7 +5,7 @@ grace:
   provider: github
 # test/fixtures/users.yml
 ada:
-  name: Grace Hooper
+  name: Ada Student
   email: grace.hooper@adadevelopersacedemy.org
   uid: 123456
   provider: github
