@@ -8,8 +8,8 @@
 
     <br><b><%= task.task_status %></b>
     <br><% if task.completion_status == false %>
-      <%= button_to "Mark Complete", task_finished_path(task.id),  method: :patch %>
-      <%end %>
+    <%= button_to "Mark Complete", task_finished_path(task.id),  method: :patch %>
+    <%end %>
 
 
     <br><%= link_to "Edit Task", edit_task_path(task.id) %>

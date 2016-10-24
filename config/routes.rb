@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get '/' => 'welcome#index', as: "welcome"
+
   get 'auth/:provider/callback' => 'sessions#create'
   get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"
   get "/sessions", to: "sessions#index", as: "sessions"
